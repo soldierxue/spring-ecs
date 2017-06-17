@@ -31,8 +31,8 @@
 	  ],
       "portMappings": [
         {
-          "containerPort": "8761",
-          "hostPort":"8761",
+          "containerPort": "8762",
+          "hostPort":"8762",
           "protocol": "tcp"
         }
       ]	        
