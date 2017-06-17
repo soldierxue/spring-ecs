@@ -1,0 +1,71 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "eureka1",
+      "image": "${docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT",
+      "memory": "256",
+      "cpu": "256",
+      "essential": true,
+	  "environment" : [
+	      { "name" : "spring.profiles.active", "value" : "eureka1" }
+	  ],     
+      "portMappings": [
+        {
+          "containerPort": "8761",
+          "hostPort":"8761",
+          "protocol": "tcp"
+        }
+      ],
+      "links": [
+        "eureka2"
+      ]
+    },
+    {
+      "name": "eureka2",
+      "image": "${docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT",
+      "memory": "256",
+      "cpu": "256",
+      "essential": true,
+	  "environment" : [
+	      { "name" : "spring.profiles.active", "value" : "eureka2" }
+	  ],
+      "portMappings": [
+        {
+          "containerPort": "8762",
+          "hostPort":"8762",
+          "protocol": "tcp"
+        }
+      ]	        
+    },
+    {
+      "name": "petowner",
+      "image": "${docker_registry_host}/spring-petclinic-rest-owner:1.7",
+      "memory": "256",
+      "cpu": "256",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": "8080",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "name": "pet",
+      "image": "${docker_registry_host}/spring-petclinic-rest-pet:1.7",
+      "memory": "256",
+      "cpu": "256",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": "8080",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "volumes": [],
+  "networkMode": "bridge",
+  "placementConstraints": [],
+  "family": "eureka-pet-stack"
+}
