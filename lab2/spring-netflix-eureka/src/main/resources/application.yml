@@ -1,7 +1,6 @@
 spring:
   application:
     name: eureka-discovery
-  profiles: eureka1
 ---
 spring:
   profiles: eureka1
@@ -11,10 +10,10 @@ server:
 
 eureka:
   instance: 
-    hostname: eureka1.host  # 指定当profile=eureka1时，主机名是eureka1.host
+    hostname: eureka1 
   client:
     serviceUrl:
-       defaultZone: http://eureka2.host:8762/eureka/
+       defaultZone: http://eureka2:8762/eureka/
     register-with-eureka: true
     fetch-registry: true
     
@@ -27,9 +26,9 @@ server:
 
 eureka:
   instance: 
-    hostname: eureka2.host  
+    hostname: eureka2  
   client:
     serviceUrl:
-       defaultZone: http://eureka1.host:8761/eureka/
+       defaultZone: http://eureka1:8761/eureka/
     register-with-eureka: true
     fetch-registry: true

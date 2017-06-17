@@ -1,14 +1,14 @@
 version: "2"
 services:
   eureka1:  
-    image: ${env.docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT
+    image: ${docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT
     ports:
       - "8761:8761"
     environment:
       - spring.profiles.active=eureka1
   eureka2:
-    image: ${env.docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT
-    hostname: eureka2.host
+    image: ${docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT
+    hostname: eureka2
     ports:
       - "8762:8762"
     environment:
