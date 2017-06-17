@@ -1,0 +1,12 @@
+version: "2"
+services:
+  eureka1:  
+    image: ${docker_registry_host}/netflix-eureka:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    environment:
+      - spring.profiles.active=eureka1
+  petowner:
+    image: ${docker_registry_host}/spring-petclinic-rest-owner:1.7
+    ports:
+      - "0:8082"
