@@ -20,5 +20,14 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     enabled: false
 
+---
+spring:
+  profiles: docker
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
+    enabled: true 
 
 #       https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/cconfig

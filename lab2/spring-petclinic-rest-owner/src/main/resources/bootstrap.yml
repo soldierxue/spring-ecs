@@ -22,7 +22,27 @@ spring:
   profiles: ecs
   
 info:
-  component: owner service for ecs testing 
+  component: owner service for ecs testing
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      failFast: true
+      retry:
+        initialInterval: 3000
+        multiplier: 1.3
+        maxInterval: 5000
+        maxAttempts: 20
+      discovery:
+        enabled: true
+        serviceId: config-server
+#      uri: http://config-server
+  
+info:
+  component: owner service for docker testing   
    
 
+ 
   
