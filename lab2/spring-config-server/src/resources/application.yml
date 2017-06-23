@@ -29,5 +29,7 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
     enabled: true 
-
+    
+spring.cloud.config.server.native.searchLocations: classpath:/config-repo
+spring.profiles.active: native
 #       https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/cconfig

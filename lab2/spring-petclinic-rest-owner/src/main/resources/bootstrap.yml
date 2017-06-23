@@ -36,9 +36,11 @@ spring:
         maxInterval: 5000
         maxAttempts: 20
       discovery:
-        enabled: true
-        serviceId: config-server
-#      uri: http://config-server
+        enabled: false
+#        serviceId: config-server
+      uri: http://config-server:7001/
+
+server.port: 8080
   
 info:
   component: owner service for docker testing   
