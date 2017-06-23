@@ -1,19 +1,15 @@
 spring:
   application: 
     name: config-server
-#  cloud:
-#    config:
-#      server:
-#        git:
-#          uri: file:/home/ec2-user/submitdemo/config-repo
  
 server:
   port: 7001
 
 #spring.cloud.config.server.git.searchPaths
 
-spring.cloud.config.server.native.searchLocations: classpath:/config-repo
+#spring.cloud.config.server.native.searchLocations: classpath:/config-repo
 #spring.profiles.active: native
+spring.cloud.config.server.git.uri: file:/home/ec2-user/submitdemo/config-repo
 
 logging:
   level:
@@ -28,16 +24,20 @@ eureka:
 ---
 spring:
   profiles: docker
+  application:
+    name: config-server
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/soldierxue/spring-ecs-config
-          
+        git: 
+          uri: /home/ec2-user/submitdemo/config-repo
 eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
     enabled: true 
-    
+
+server.port: 7001    
+#spring.cloud.config.server.native.searchLocations: classpath:/config-repo
+#spring.profiles.active: native
 #       https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/cconfig
