@@ -1,4 +1,4 @@
-version: "2"
+version: "2.1"
 services:
   eureka1:  
     image: ${docker_registry_host}/spring-netflix-eureka-ha:0.0.1-SNAPSHOT
@@ -13,3 +13,25 @@ services:
       - "8762:8762"
     environment:
       - spring.profiles.active=eureka2
+  config-server:
+    image: ${docker_registry_host}/spring-config-server:1.0-SNAPSHOT
+    hostname: config-server
+    ports:
+      - "7001:7001"
+    environment:
+      - spring.profiles.active=docker
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7001/application/default"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  owner-service:
+    image: ${docker_registry_host}/spring-petclinic-rest-owner:1.7
+    ports:
+      - "0:8080"
+    environment:
+      - spring.profiles.active=docker
+    depends_on:
+      config-server:
+         condition: service_healthy
+
