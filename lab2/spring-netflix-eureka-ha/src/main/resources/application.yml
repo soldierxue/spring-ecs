@@ -28,3 +28,31 @@ eureka:
   client:
     serviceUrl:
        defaultZone: http://eureka1:8761/eureka/
+
+---
+spring:
+  profiles: ecs1
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eureka.sasubmit.cc
+  client:
+    serviceUrl:
+       defaultZone: http://eureka2.sasubmit.cc:8761/eureka/
+
+---
+spring:
+  profiles: ecs2
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eureka2.sasubmit.cc
+  client:
+    serviceUrl:
+       defaultZone: http://eureka.sasubmit.cc:8761/eureka/
