@@ -20,6 +20,20 @@ spring:
 ---
 spring:
   profiles: ecs
+  cloud:
+    config:
+      failFast: true
+      retry:
+        initialInterval: 3000
+        multiplier: 1.3
+        maxInterval: 5000
+        maxAttempts: 20
+      discovery:
+        enabled: false
+#        serviceId: config-server
+      uri: http://config.sasubmit.cc:8761/
+
+server.port: 8080
   
 info:
   component: visit service for ecs testing 
