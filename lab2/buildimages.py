@@ -13,7 +13,7 @@ import boto3
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def cleanup(project_name='spring-cloud-demo', service_list={'spring-netflix-eureka-ha':'8761','spring-config-server':'7001','spring-petclinic-rest-owner':'8080','spring-petclinic-rest-vet':'8080','spring-petclinic-rest-visit':'8080','spring-petclinic-rest-visit':'8080'}, region='ap-northeast-1'):
+def cleanup(project_name='spring-cloud-demo', service_list={'spring-netflix-eureka-ha':'8761','spring-config-server':'7001','spring-petclinic-rest-owner':'8080','spring-petclinic-rest-vet':'8080','spring-petclinic-rest-visit':'8080','spring-petclinic-rest-pet':'8080'}, region='ap-northeast-1'):
     ecr_client = boto3.client('ecr')
 
     for service in service_list:
@@ -77,7 +77,7 @@ def main():
     parser.add_argument('-p', '--project_name', required=False, default='spring-cloud-demo',
                         help="Name of the project")
     parser.add_argument('-r', '--region', required=True, default='ap-northeast-1', help="Region. Default 'ap-northeast-1'")
-    parser.add_argument('-s', '--service_list', required=False, default={'spring-netflix-eureka-ha':'8761','spring-config-server':'7001','spring-petclinic-rest-owner':'8080','spring-petclinic-rest-vet':'8080','spring-petclinic-rest-visit':'8080','spring-petclinic-rest-visit':'8080'},
+    parser.add_argument('-s', '--service_list', required=False, default={'spring-netflix-eureka-ha':'8761','spring-config-server':'7001','spring-petclinic-rest-owner':'8080','spring-petclinic-rest-vet':'8080','spring-petclinic-rest-visit':'8080','spring-petclinic-rest-pet':'8080'},
                         help="Service list. The artificat id of the Spring Application")
     args = parser.parse_args()
 
