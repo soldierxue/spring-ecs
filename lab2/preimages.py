@@ -61,6 +61,7 @@ def setup(project_name='spring-cloud-demo', service_list={'spring-netflix-eureka
         # Set repository host URL in pom.xml
         os.environ["docker_registry_host"] = uri.split('/')[0]
         logger.info('Compile project, package, bake image, and push to registry for ' + service)
+        logger.infor(uri)
         # Compile project, package, bake image, and push to registry
         os.chdir(service)
         os.system('mvn clean package docker:build -DpushImage -Dmaven.test.skip=true')	

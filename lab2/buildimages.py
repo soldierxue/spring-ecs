@@ -59,7 +59,7 @@ def setup(project_name='spring-cloud-demo', service_list={'spring-netflix-eureka
         #create_repository_response = ecr_client.create_repository(repositoryName=service)
         #logger.info("Create ECR repository")
         #uri = create_repository_response['repository']['repositoryUri']
-        uri = accountId+".dkr.ecr.ap-northeast-1.amazonaws.com/"+service
+        uri = accountId+".dkr.ecr."+region+".amazonaws.com/"+service
         repository_uri.append({service: uri})
 
         # Set repository host URL in pom.xml
